@@ -77,6 +77,7 @@ def main(robotIP):
     y  = 0.0
     theta  = 0.0
     frequency  = 0.3
+    CommandFreq = 0.5
     print("Ready for moving")
     while True:
         buttons = wm.state['buttons']
@@ -116,7 +117,7 @@ def main(robotIP):
             x = 0
             y = 0
             motionProxy.setWalkTargetVelocity(x, y, theta, frequency)
-        time.sleep(0.5)
+        time.sleep(CommandFreq) # sleep after every command
 
 if __name__ == "__main__":
     robotIp = "192.168.1.49"
