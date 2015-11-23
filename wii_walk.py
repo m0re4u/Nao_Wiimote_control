@@ -76,11 +76,20 @@ def main(robotIP):
     x  = 0.0
     y  = 0.0
     theta  = 0.0
-    frequency  = 0.1
+    frequency  = 0.3
     print("Ready for moving")
     while True:
         buttons = wm.state['buttons']
-        if (buttons & cwiid.BTN_UP):
+
+        if (buttons & cwiid.BTN_HOME):
+            print("Closing Connection")
+            wm.rumble = 1
+            time.sleep(1)
+            wm.rumble = 0
+            motionProxy.killAll()
+            motionProxy.rest()
+            exit()
+        elif (buttons & cwiid.BTN_UP):
             print("Move forward")
             x = 0.5
             motionProxy.setWalkTargetVelocity(x, y, theta, frequency)
@@ -88,13 +97,24 @@ def main(robotIP):
             print("Move backward")
             x  = -0.5
             motionProxy.setWalkTargetVelocity(x, y, theta, frequency)
+        elif (buttons & cwiid.BTN_LEFT):
+            print("Walking left")
+            y = 0.5
+            motionProxy.setWalkTargetVelocity(x, y, theta, frequency)
+        elif (buttons & cwiid.BTN_RIGHT):
+            print("Walking right")
+            y = -0.5
+            motionProxy.setWalkTargetVelocity(x, y, theta, frequency)
         elif (buttons & cwiid.BTN_MINUS):
-            postureProxy.goToPosture("Crouch", 0.5)
+            print("Going to rest")
+            motionProxy.rest()
         elif (buttons & cwiid.BTN_PLUS):
+            print("Standup")
             postureProxy.goToPosture("StandInit", 0.5)
         else:
-            print("Stop")
+            print("Doing nothing..")
             x = 0
+            y = 0
             motionProxy.setWalkTargetVelocity(x, y, theta, frequency)
         time.sleep(0.5)
 
@@ -102,7 +122,7 @@ if __name__ == "__main__":
     robotIp = "192.168.1.49"
 
     if len(sys.argv) <= 1:
-        print "Usage python motion_walk.py robotIP (optional default: 127.0.0.1)"
+        print "Usage: python wii_walk.py robotIP (optional default: 192.168.1.49)"
     else:
         robotIp = sys.argv[1]
     wm = None
