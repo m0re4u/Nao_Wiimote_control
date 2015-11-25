@@ -211,7 +211,7 @@ def main(args):
             print("Trying behavior")
             for nao in naos:
                 nao.behavior.post.runBehavior('vangelis')
-                print nao.behavior.post.getBehaviorNames()
+                print nao.behavior.post.getInstalledBehaviors()
         else:
             print("Doing nothing..")
             for nao in naos:
