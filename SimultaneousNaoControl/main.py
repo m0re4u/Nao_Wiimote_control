@@ -67,21 +67,25 @@ def main(args):
             for nao in naos:
                 x = 0.5
                 nao.motion.setWalkTargetVelocity(x, y, theta, frequency)
+                time.sleep(CommandFreq)
         elif (buttons & cwiid.BTN_DOWN):
             print("Move backward")
             for nao in naos:
                 x  = -0.5
                 nao.motion.setWalkTargetVelocity(x, y, theta, frequency)
+                time.sleep(CommandFreq)
         elif (buttons & cwiid.BTN_LEFT):
             print("Turning left")
             for nao in naos:
                 theta = 0.5
                 nao.motion.setWalkTargetVelocity(x, y, theta, frequency)
+                time.sleep(CommandFreq)
         elif (buttons & cwiid.BTN_RIGHT):
             print("Walking right")
             for nao in naos:
                 theta = -0.5
                 nao.motion.setWalkTargetVelocity(x, y, theta, frequency)
+                time.sleep(CommandFreq)
         elif (buttons & cwiid.BTN_MINUS):
             print("Going to rest")
             for nao in naos:
