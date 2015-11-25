@@ -92,6 +92,10 @@ def main(args):
             for nao in naos:
                 nao.posture.goToPosture("StandInit", 0.5)
             print("Done standing up")
+        elif (buttons & cwiid.BTN_A):
+            print("Sit")
+            for nao in naos:
+                nao.posture.goToPosture("Sit", 0.5)
         else:
             print("Doing nothing..")
             for nao in naos:
