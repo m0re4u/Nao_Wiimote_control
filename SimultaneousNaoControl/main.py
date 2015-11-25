@@ -210,8 +210,14 @@ def main(args):
         elif (buttons & cwiid.BTN_B):
             print("Trying behavior")
             for nao in naos:
-                nao.behavior.post.runBehavior('vangelis')
-                print nao.behavior.post.getInstalledBehaviors()
+                # nao.behavior.post.runBehavior('vangelis')
+                names = nao.behavior.getInstalledBehaviors()
+                print "Behaviors on the robot:"
+                print names 
+    
+                names = nao.behavior.getRunningBehaviors()
+                print "Running behaviors:"
+                print names       
         else:
             print("Doing nothing..")
             for nao in naos:
