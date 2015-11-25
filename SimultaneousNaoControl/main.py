@@ -38,6 +38,7 @@ def main(args):
             ip = nao
             port = DEFAULT_PORT
             naos.addnao(ip, int(port))
+    print("Connected",len(naos),"Naos")
     wm = None
     wm = connectWiimote(wm)
     x  = 0.0
@@ -45,8 +46,6 @@ def main(args):
     theta  = 0.0
     frequency  = 0.3
     CommandFreq = 0.5
-    print("Ready for moving")
-
     print("Connected Wiimote")
     starttime = time.time()
 
@@ -55,6 +54,7 @@ def main(args):
         if (buttons & cwiid.BTN_HOME):
             print("Closing Connection")
             for nao in naos:
+                print(nao.behavior.post.getInstalledBehaviors())
                 wm.rumble = 1
                 time.sleep(1)
                 wm.rumble = 0
@@ -86,10 +86,12 @@ def main(args):
             print("Going to rest")
             for nao in naos:
                 nao.motion.rest()
+            print("Resting")
         elif (buttons & cwiid.BTN_PLUS):
             print("Standup")
             for nao in naos:
                 nao.posture.goToPosture("StandInit", 0.5)
+            print("Done standing up")
         else:
             print("Doing nothing..")
             for nao in naos:
@@ -97,7 +99,7 @@ def main(args):
                 y = 0
                 nao.motion.setWalkTargetVelocity(x, y, theta, frequency)
             time.sleep(CommandFreq) # sleep after every command
-            nao.behavior.post.runBehavior('standup')
+
 
     # Do a simply interpolation
     #target1 = math.radians(119.5)
