@@ -1,0 +1,4 @@
+Use Python version 2.6
+Make sure the python path to the aldebaran lib directory is in place (in the SDK folder, maybe the choregraphe lib works as well)
+
+Run the main.py with arguments '--nao IPADDRESS' for each nao (and set the behaviour on line 24)
