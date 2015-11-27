@@ -9,17 +9,4 @@ right : turn right
 A : the robot
 B : the caravan palace dance
 1 : hello wave
-2 : gangnam style
-
-Controller 2
-+ :
-- :
-home :
-up :
-down : 
-left :
-right :
-A : Macarena
-B : 
-1 :
-2 :
+2 : macarena
