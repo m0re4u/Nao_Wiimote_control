@@ -22,8 +22,8 @@ def connectWiimote(wm, n):
             print("Failed attempt",i)
             i += 1
 
-    wm.rpt_mode = cwiid.RPT_BTN | cwiid.RPT_ACC 
-    wm.led = n 
+    wm.rpt_mode = cwiid.RPT_BTN | cwiid.RPT_ACC
+    wm.led = n
     return wm
 
 # Main program to perform the measurements
@@ -41,7 +41,7 @@ def main(args):
     print("Connected",len(naos),"Naos")
     wm = None
     wm = connectWiimote(wm, 1)
-    # uncommend for extra controller
+    # uncomment for extra controller
     # wm2 = None
     # wm2 = connectWiimote(wm2, 2)
     x  = 0.0
@@ -213,7 +213,7 @@ def main(args):
                 naos.motion.post.angleInterpolationBezier(names, times, keys)
             except BaseException, err:
                 print err
-        
+
         elif (buttons1 & cwiid.BTN_B):
             print("Caravan palace dance")
             # Choregraphe bezier export in Python.
