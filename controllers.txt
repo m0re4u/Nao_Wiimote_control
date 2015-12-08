@@ -5,8 +5,21 @@ home : shutdown
 up : walk forwards
 down : walk backwards
 left : turn left
-right : turn right 
+right : turn right
 A : the robot
 B : the caravan palace dance
 1 : hello wave
 2 : macarena
+
+
+KEYBOARD
+Forward:        w
+Backward:       s
+Turn left:      a
+Turn right:     d
+Standup:        e
+Sit down:       q
+Robot:          y
+Kick:           u
+Wave:           h
+Macarena        j
