@@ -8,7 +8,7 @@ from threading import Thread
 from naomanager import NaoManager, DEFAULT_PORT
 from naoqi import ALProxy
 
-getch = _Getch()
+getch = getch._Getch()
 
 # Main program to perform the measurements
 def main(args):
@@ -33,7 +33,7 @@ def main(args):
 
     while True:
         key_press = getch()
-        key_press = a.decode('ascii')
+        key_press = key_press.decode('ascii')
         if (key_press == 'z'):
             print("Closing Connection")
             for nao in naos:
