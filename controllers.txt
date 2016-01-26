@@ -17,10 +17,14 @@ Forward:        w
 Backward:       s
 Turn left:      a
 Turn right:     d
-Stop:           x
+Stop moving:    x
+
 Standup:        e
 Sit down:       q
+
 Robot:          y
 Kick:           u
 Wave:           h
 Macarena        j
+
+Close connection:   z
