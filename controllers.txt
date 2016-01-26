@@ -12,11 +12,12 @@ B : the caravan palace dance
 2 : macarena
 
 
-KEYBOARD
+=====KEYBOARD=====
 Forward:        w
 Backward:       s
 Turn left:      a
 Turn right:     d
+Stop:           x
 Standup:        e
 Sit down:       q
 Robot:          y

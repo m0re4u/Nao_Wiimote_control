@@ -10,6 +10,7 @@ from naoqi import ALProxy
 
 getch = getch._Getch()
 
+
 # Main program to perform the measurements
 def main(args):
     # Create list of nao objects
@@ -17,16 +18,16 @@ def main(args):
     for nao in args.nao:
         try:
             ip, port = nao.split(':')
-            #naos.addnao(ip, int(port))
+            # naos.addnao(ip, int(port))
         except ValueError:
             ip = nao
             port = DEFAULT_PORT
             naos.addnao(ip, int(port))
-    print("Connected",len(naos),"Naos")
-    x  = 0.0
-    y  = 0.0
-    theta  = 0.0
-    frequency  = 0.3
+    print("Connected", len(naos), "Naos")
+    x = 0.0
+    y = 0.0
+    theta = 0.0
+    frequency = 0.3
     CommandFreq = 0.5
     starttime = time.time()
     print("Ready for liftoff at:", starttime)
@@ -45,13 +46,18 @@ def main(args):
             print("Moving forward")
             for nao in naos:
                 x = 0.5
-                nao.motion.setWalkTargetVelocity(x, y, theta, frequency)
+                nao.motion.setWalkTargetVelocity(x, 0, 0, frequency)
                 time.sleep(CommandFreq)
         elif (key_press == 's'):
             print("Moving backward")
             for nao in naos:
-                x  = -0.5
-                nao.motion.setWalkTargetVelocity(x, y, theta, frequency)
+                x = -0.5
+                nao.motion.setWalkTargetVelocity(x, 0, 0, frequency)
+                time.sleep(CommandFreq)
+        elif (key_press == 'x'):
+            print("Stopping")
+            for nao in naos:
+                nao.motion.setWalkTargetVelocity(0, 0, 0, frequency)
                 time.sleep(CommandFreq)
         elif (key_press == 'a'):
             print("Turning left")
@@ -380,9 +386,10 @@ def main(args):
             keys.append([[-0.312978, [3, -0.466667, 0], [3, 0.64, 0]], [-0.303775, [3, -0.64, -0.00920312], [3, 0.373333, 0.00536849]], [0.182504, [3, -0.373333, 0], [3, 0, 0]]])
 
             try:
-              # uncomment the following line and modify the IP if you use this script outside Choregraphe.
-              # motion = ALProxy("ALMotion", IP, 9559)
-              # motion = ALProxy("ALMotion")
+                # uncomment the following line and modify the IP if you use
+                # this script outside Choregraphe.
+                # motion = ALProxy("ALMotion", IP, 9559)
+                # motion = ALProxy("ALMotion")
               naos.motion.post.angleInterpolationBezier(names, times, keys)
             except BaseException, err:
               print err
@@ -498,21 +505,21 @@ def main(args):
             times.append([1, 1.96, 2.76, 3.48, 4.16, 4.64, 5.08, 5.52, 5.92, 6.52, 7.12, 7.64, 8.36, 9.08, 10.4, 11.68, 12.76, 13.28, 13.64, 14.4, 15.12, 16, 16.68, 17.28])
             keys.append([[0.05825, [3, -0.333333, 0], [3, 0.32, 0]], [-1.15821, [3, -0.32, 0], [3, 0.266667, 0]], [-1.15821, [3, -0.266667, 0], [3, 0.24, 0]], [1.19648, [3, -0.24, 0], [3, 0.226667, 0]], [1.19648, [3, -0.226667, 0], [3, 0.16, 0]], [0.561403, [3, -0.16, 0.194484], [3, 0.146667, -0.178277]], [0.078192, [3, -0.146667, 0.052156], [3, 0.146667, -0.052156]], [0.0260359, [3, -0.146667, 0], [3, 0.133333, 0]], [0.0275701, [3, -0.133333, -0.00153415], [3, 0.2, 0.00230122]], [0.628898, [3, -0.2, 0], [3, 0.2, 0]], [-0.351328, [3, -0.2, 0], [3, 0.173333, 0]], [0.977116, [3, -0.173333, 0], [3, 0.24, 0]], [0.960242, [3, -0.24, 0], [3, 0.24, 0]], [0.960242, [3, -0.24, 0], [3, 0.44, 0]], [0.694859, [3, -0.44, 0], [3, 0.426667, 0]], [0.694859, [3, -0.426667, 0], [3, 0.36, 0]], [0.944902, [3, -0.36, 0], [3, 0.173333, 0]], [0.84826, [3, -0.173333, 0.00221594], [3, 0.12, -0.00153411]], [0.846726, [3, -0.12, 0.00153411], [3, 0.253333, -0.00323869]], [0.825251, [3, -0.253333, 0], [3, 0.24, 0]], [0.825251, [3, -0.24, 0], [3, 0.293333, 0]], [0.812978, [3, -0.293333, 0.0122732], [3, 0.226667, -0.00948382]], [0.0398422, [3, -0.226667, 0], [3, 0.2, 0]], [0.131882, [3, -0.2, 0], [3, 0, 0]]])
 
-
             try:
-              # uncomment the following line and modify the IP if you use this script outside Choregraphe.
-              # motion = ALProxy("ALMotion", IP, 9559)
-              # motion = ALProxy("ALMotion")
-              naos.motion.post.angleInterpolationBezier(names, times, keys)
+                # uncomment the following line and modify the IP if you use
+                # this script outside Choregraphe.
+                # motion = ALProxy("ALMotion", IP, 9559)
+                # motion = ALProxy("ALMotion")
+                naos.motion.post.angleInterpolationBezier(names, times, keys)
             except BaseException, err:
-              print err
+                print err
         else:
             print("Doing nothing..")
             for nao in naos:
                 x = 0
                 theta = 0
                 nao.motion.setWalkTargetVelocity(x, y, theta, frequency)
-            time.sleep(CommandFreq) # sleep after every command
+            time.sleep(CommandFreq)  # sleep after every command
 
 if __name__ == '__main__':
     # Parse arguments
