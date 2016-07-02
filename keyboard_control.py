@@ -23,14 +23,17 @@ def main(args):
             ip = nao
             port = DEFAULT_PORT
             naos.addnao(ip, int(port))
-    print("Connected", len(naos), "Naos")
+    if len(naos) == 1:
+        print("Connected {} Nao".format(len(naos)))
+    else:
+        print("Connected {} Naos".format(len(naos)))
     x = 0.0
     y = 0.0
     theta = 0.0
     frequency = 0.3
     CommandFreq = 0.5
     starttime = time.time()
-    print("Ready for liftoff at:", starttime)
+    print("Ready for liftoff at: {}".format(starttime))
 
     while True:
         key_press = getch()
