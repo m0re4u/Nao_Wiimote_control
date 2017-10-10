@@ -1,3 +1,11 @@
+"""
+keyboard_control.py:
+    Control a Nao robot that is currently running the Naoqi software with your
+    keyboard! Key bindings are defined in controllers.txt.
+
+    Requires naomanager.py & an installation of pynaoqi
+"""
+
 import argparse
 import sys
 import time
@@ -7,6 +15,10 @@ from threading import Thread
 
 from naomanager import NaoManager, DEFAULT_PORT
 from naoqi import ALProxy
+
+__author__ = "Michiel van der Meer, Caitlin Lagrand"
+__copyright__ = "Copyright 2017, Dutch Nao Team"
+__version__ = "0.1.7"
 
 getch = getch._Getch()
 
@@ -523,6 +535,7 @@ def main(args):
                 theta = 0
                 nao.motion.setWalkTargetVelocity(x, y, theta, frequency)
             time.sleep(CommandFreq)  # sleep after every command
+
 
 if __name__ == '__main__':
     # Parse arguments
