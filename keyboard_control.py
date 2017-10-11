@@ -19,7 +19,7 @@ from naoqi import ALProxy
 
 __author__ = "Michiel van der Meer, Caitlin Lagrand"
 __copyright__ = "Copyright 2017, Dutch Nao Team"
-__version__ = "0.1.7"
+__version__ = "0.2.0"
 
 getch = getch._Getch()
 
